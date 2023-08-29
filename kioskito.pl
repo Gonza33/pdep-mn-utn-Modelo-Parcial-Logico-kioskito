@@ -31,3 +31,13 @@ atiende(leoC,miercoles, 14,18).
 
 atiende(martu,miercoles, 23,24).
 
+%Punto 1
+
+atiende(vale, Dia, HoraIngreso, HoraSalida):- atiende(dodain, Dia, HoraIngreso, HoraSalida).
+atiende(vale, Dia, HoraIngreso, HoraSalida):- atiende(juanC, Dia, HoraIngreso, HoraSalida).
+
+%por principio de universo cerrado, como maiu está pensando si hace el horario de 0 a 8 los martes y miércoles, no se declara porque todavía no lo está haciendo, por ende se presume falso.
+%por principio de universo cerrado, nadie hace el mismo horario que leoC, no se declara ni agrega en la base de conocimiento aquello que no tiene sentido agregar.
+
+%Punto 2
+
