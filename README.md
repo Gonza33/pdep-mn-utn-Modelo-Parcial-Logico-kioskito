@@ -1,1 +1,7 @@
-# pdep-mn-utn-Modelo-Parcial-Logico-kioskito
+
+## Kata 1 - Viajes
+
+Integrante
+
+Gonzalo Ignacio Pesce (Gonza33) ...
+
