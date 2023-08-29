@@ -1,5 +1,5 @@
 
-## Kata 1 - Viajes
+## Modelo Parcial - Kioskito
 
 Integrante
 
