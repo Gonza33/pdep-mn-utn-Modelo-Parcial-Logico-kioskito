@@ -59,6 +59,8 @@ combinar([], []).
 combinar([Persona|PersonasDelDia], [Persona|Personas]):-combinar(PersonasDelDia, Personas).
 combinar([_|PersonasDelDia], Personas):-combinar(PersonasDelDia, Personas).
 
+
+
 %findall se usa para poder hacer una lista con un conjunto de soluciones que satisfacen un predicado.
 %el mecanismo de backtracking de prolog hace posible encontrar todas las soluciones posibles.
 
@@ -91,4 +93,4 @@ vendedor(Persona):-venta(Persona,_,_).
 ventaImportante(golosinas(PrecioGolosinas)):-PrecioGolosinas> 100.
 ventaImportante(cigarrillos(MarcasDeCigarrillos)):-length(MarcasDeCigarrillos, Cantidad), Cantidad> 2.
 ventaImportante(bebidas(true,_)).
-ventaImportante(bebidas(false,Cantidad)):-Cantidad> 5.
+ventaImportante(bebidas(_,Cantidad)):-Cantidad> 5.
