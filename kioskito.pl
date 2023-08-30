@@ -40,8 +40,13 @@ atiende(vale, Dia, HoraIngreso, HoraSalida):- atiende(juanC, Dia, HoraIngreso, H
 %por principio de universo cerrado, nadie hace el mismo horario que leoC, no se declara ni agrega en la base de conocimiento aquello que no tiene sentido agregar.
 
 %Punto 2
+%Definir un predicado que permita relacionar un día y hora con una persona, en la que dicha persona atiende el kiosko.
 
 quienEstaAhora(Persona, Dia, Hora):- atiende(Persona,Dia,HoraIngreso,HoraSalida), between(HoraIngreso, HoraSalida, Hora).
 
 %Punto3
+%Definir un predicado que permita saber si una persona en un día y horario determinado está atendiendo ella sola.
 
+foreverAlone(Persona, Dia, Hora):- quienEstaAhora(Persona, Dia, Hora),not((quienEstaAhora(Persona1, Dia, Hora),Persona\=Persona1)).
+
+%Punto4
