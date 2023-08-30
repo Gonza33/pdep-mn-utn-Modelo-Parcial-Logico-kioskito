@@ -50,3 +50,17 @@ quienEstaAhora(Persona, Dia, Hora):- atiende(Persona,Dia,HoraIngreso,HoraSalida)
 foreverAlone(Persona, Dia, Hora):- quienEstaAhora(Persona, Dia, Hora),not((quienEstaAhora(Persona1, Dia, Hora),Persona\=Persona1)).
 
 %Punto4
+
+%Dado un día, queremos relacionar qué personas podrían estar atendiendo el kiosko en algún momento de ese día.
+
+posibilidadesDeAtencion(Dia,Personas):-findall(Persona, distinct(Persona, quienEstaAhora(Persona, Dia, _)),PersonasDelDia), combinar(PersonasDelDia, Personas).
+
+combinar([], []).
+combinar([Persona|PersonasDelDia], [Persona|Personas]):-combinar(PersonasDelDia, Personas).
+combinar([_|PersonasDelDia], Personas):-combinar(PersonasDelDia, Personas).
+
+%findall se usa para poder hacer una lista con un conjunto de soluciones que satisfacen un predicado.
+%el mecanismo de backtracking de prolog hace posible encontrar todas las soluciones posibles.
+
+%Punto 5
+
