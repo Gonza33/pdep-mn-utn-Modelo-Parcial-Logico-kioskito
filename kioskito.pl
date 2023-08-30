@@ -64,3 +64,31 @@ combinar([_|PersonasDelDia], Personas):-combinar(PersonasDelDia, Personas).
 
 %Punto 5
 
+%venta(Persona,fecha (dia,mes),[Productos]).
+%dodain hizo las siguientes ventas el lunes 10 de agosto: golosinas por $ 1200, cigarrillos Jockey, golosinas por $ 50
+venta(dodain,fecha(10,8),[golosinas(1200), cigarrillos(jockey), golosinas(50)]).
+
+%dodain hizo las siguientes ventas el miércoles 12 de agosto: 8 bebidas alcohólicas, 1 bebida no-alcohólica, golosinas por $ 10
+
+venta(dodain,fecha(12,8),[bebidas(true, 8), bebidas(false, 1), golosinas(10)]).
+
+%martu hizo las siguientes ventas el miercoles 12 de agosto: golosinas por $ 1000, cigarrillos Chesterfield, Colorado y Parisiennes.
+
+venta(martu,fecha(12,8),[golosinas(1000), cigarrillos([chesterfield, colorado, parisiennes])]).
+
+%lucas hizo las siguientes ventas el martes 11 de agosto: golosinas por $ 600.
+
+venta(lucas,fecha(11,8),[golosinas(600)]).
+
+%lucas hizo las siguientes ventas el martes 18 de agosto: 2 bebidas no-alcohólicas y cigarrillos Derby
+
+venta(lucas,fecha(18,8),[ bebidas(false, 1),cigarrillos(derby) ]).
+
+personaSuertuda(Persona):- vendedor(Persona), forall(venta(Persona, _ ,[Venta|_]),ventaImportante(Venta)).
+
+vendedor(Persona):-venta(Persona,_,_).
+
+ventaImportante(golosinas(PrecioGolosinas)):-PrecioGolosinas> 100.
+ventaImportante(cigarrillos(MarcasDeCigarrillos)):-length(MarcasDeCigarrillos, Cantidad), Cantidad> 2.
+ventaImportante(bebidas(true,_)).
+ventaImportante(bebidas(false,Cantidad)):-Cantidad> 5.
